@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Profile"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guidelineTop" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".1" />
+
+    <TextView
+        android:id="@+id/tvUserId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="User Id"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvProfile" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".8" />
+
+    <ImageView
+        android:id="@+id/iconFacebook"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_action_facebook"
+        app:layout_constraintLeft_toLeftOf="@id/guidelineLeft"
+        app:layout_constraintTop_toBottomOf="@id/guidelineLinks"/>
+
+    <ImageView
+        android:id="@+id/iconTwitter"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintLeft_toLeftOf="@id/guidelineLeft"
+        app:layout_constraintTop_toBottomOf="@id/iconFacebook"/>
+
+    <ImageView
+        android:id="@+id/iconSnapchat"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintLeft_toLeftOf="@id/guidelineLeft"
+        app:layout_constraintTop_toBottomOf="@id/iconTwitter"/>
+
+    <ImageView
+        android:id="@+id/iconInstagram"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintLeft_toLeftOf="@id/guidelineLeft"
+        app:layout_constraintTop_toBottomOf="@id/iconSnapchat"/>
+
+    <ImageView
+        android:id="@+id/iconLinkedIn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintLeft_toLeftOf="@id/guidelineLeft"
+        app:layout_constraintTop_toBottomOf="@id/iconInstagram"/>
+
+    <TextView
+        android:id="@+id/tvFacebookUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:textSize="30sp"
+        android:text="Username"
+        android:textAlignment="center"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toRightOf="@id/iconFacebook"
+        app:layout_constraintTop_toTopOf="@id/iconFacebook"/>
+
+    <TextView
+        android:id="@+id/tvTwitterUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:textSize="30sp"
+        android:text="Username"
+        android:textAlignment="center"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toRightOf="@id/iconTwitter"
+        app:layout_constraintTop_toTopOf="@id/iconTwitter"/>
+
+    <TextView
+        android:id="@+id/tvSnapchatUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:textSize="30sp"
+        android:text="Username"
+        android:textAlignment="center"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toRightOf="@id/iconSnapchat"
+        app:layout_constraintTop_toTopOf="@id/iconSnapchat"/>
+
+    <TextView
+        android:id="@+id/tvInstagramUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:textSize="30sp"
+        android:text="Username"
+        android:textAlignment="center"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toRightOf="@id/iconInstagram"
+        app:layout_constraintTop_toTopOf="@id/iconInstagram"/>
+
+    <TextView
+        android:id="@+id/tvLinkedInUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:textSize="30sp"
+        android:text="Username"
+        android:textAlignment="center"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toRightOf="@id/iconLinkedIn"
+        app:layout_constraintTop_toTopOf="@id/iconLinkedIn"/>
+
+    <Button
+        android:id="@+id/btnAddFacebook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:textSize="20sp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toRightOf="@id/tvFacebookUsername"
+        app:layout_constraintTop_toTopOf="@id/iconFacebook"/>
+
+    <Button
+        android:id="@+id/btnAddTwitter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:textSize="20sp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toRightOf="@id/tvTwitterUsername"
+        app:layout_constraintTop_toTopOf="@id/iconTwitter"/>
+
+    <Button
+        android:id="@+id/btnAddSnapchat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:textSize="20sp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toRightOf="@id/tvSnapchatUsername"
+        app:layout_constraintTop_toTopOf="@id/iconSnapchat"/>
+
+    <Button
+        android:id="@+id/btnAddInstagram"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:textSize="20sp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toRightOf="@id/tvInstagramUsername"
+        app:layout_constraintTop_toTopOf="@id/iconInstagram"/>
+
+    <Button
+        android:id="@+id/btnAddLinkedIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:textSize="20sp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toRightOf="@id/tvLinkedInUsername"
+        app:layout_constraintTop_toTopOf="@id/iconLinkedIn"/>
+
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineLinks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".27" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
