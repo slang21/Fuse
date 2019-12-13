@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
 
         btnScan.setOnClickListener {
             // launch QRActivity here
+            // eventually this should be a bottomNavTab
         }
     }
 
