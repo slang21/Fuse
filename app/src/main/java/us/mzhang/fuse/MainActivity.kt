@@ -1,12 +1,15 @@
 package us.mzhang.fuse
 
+import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import android.app.ActivityOptions
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,6 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         btnScan.setOnClickListener {
             // launch QRActivity here
+            startActivity(Intent(this@MainActivity, QRActivity::class.java))
         }
     }
 
