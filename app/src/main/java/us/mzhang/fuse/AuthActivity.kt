@@ -1,7 +1,6 @@
 package us.mzhang.fuse
 
 import android.content.Intent
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -35,6 +34,7 @@ class AuthActivity : AppCompatActivity() {
                     MainActivity::class.java
                 )
             )
+            finish()
 
         }.addOnFailureListener {
 
@@ -81,6 +81,12 @@ class AuthActivity : AppCompatActivity() {
                     "Welcome ${user.displayName.toString()}}",
                     Toast.LENGTH_LONG
                 ).show()
+                startActivity(
+                    Intent(
+                        this@AuthActivity,
+                        MainActivity::class.java
+                    )
+                )
             }.addOnFailureListener {
                 Toast.makeText(this@AuthActivity, "Error: ${it.message}", Toast.LENGTH_LONG).show()
             }
