@@ -32,7 +32,7 @@ class QRActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
     }
 
     override fun handleResult(qrResult: Result?) {
-        // tvData.text = qrResult?.text
+        test.text = qrResult?.text
         zxingView.setResultHandler(this)
         zxingView.startCamera()
     }
