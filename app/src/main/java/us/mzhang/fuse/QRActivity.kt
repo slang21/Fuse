@@ -14,6 +14,17 @@ class QRActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
 
         zxingView.setResultHandler(this)
         zxingView.startCamera()
+
+        // 
+        var social = SocialIntent(this)
+
+        btnTwitter.setOnClickListener {
+            social.launchTwitter()
+        }
+
+        btnSnapchat.setOnClickListener {
+            social.launchSnapchat()
+        }
     }
 
     override fun onStop() {
@@ -22,7 +33,7 @@ class QRActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
     }
 
     override fun handleResult(qrResult: Result?) {
-        // tvData.text = qrResult?.text
+        test.text = qrResult?.text
         zxingView.setResultHandler(this)
         zxingView.startCamera()
     }

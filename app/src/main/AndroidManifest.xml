@@ -15,6 +15,7 @@
         <activity android:name=".SplashActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".ProfileActivity"/>
         <activity android:name=".AuthActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
