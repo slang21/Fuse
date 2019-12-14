@@ -15,7 +15,6 @@ class QRActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
         zxingView.setResultHandler(this)
         zxingView.startCamera()
 
-        // 
         var social = SocialIntent(this)
 
         btnTwitter.setOnClickListener {
