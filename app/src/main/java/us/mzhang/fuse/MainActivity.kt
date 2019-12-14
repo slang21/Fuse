@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity() {
         requestNeededPermission()
 
         btnScan.setOnClickListener {
-            // launch QRActivity here
             startActivity(Intent(this@MainActivity, QRActivity::class.java))
         }
 

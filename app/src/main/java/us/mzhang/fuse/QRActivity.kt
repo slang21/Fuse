@@ -6,6 +6,7 @@ import com.google.zxing.Result
 import kotlinx.android.synthetic.main.activity_qr.*
 import me.dm7.barcodescanner.zxing.ZXingScannerView
 
+
 class QRActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +25,11 @@ class QRActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
         btnSnapchat.setOnClickListener {
             social.launchSnapchat()
         }
+
+        btnInsta.setOnClickListener {
+            social.launchInstagram()
+        }
+
     }
 
     override fun onStop() {

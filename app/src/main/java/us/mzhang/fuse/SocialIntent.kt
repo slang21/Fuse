@@ -4,6 +4,9 @@ import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import androidx.core.content.ContextCompat.startActivity
+
+
 
 
 class SocialIntent(val context: Context) {
@@ -11,6 +14,7 @@ class SocialIntent(val context: Context) {
     val twitterUser = "jack"
     val snapchatId = "testing123"
     val instaUser = "jimmychin"
+    val toktikUser = "piffpeterson"
 
     fun launchTwitter() {
         try {
@@ -44,11 +48,8 @@ class SocialIntent(val context: Context) {
     }
 
     fun launchInstagram() {
-        val uri = Uri.parse("http://instagram.com/_u/$instaUser")
-        val likeIng = Intent(Intent.ACTION_VIEW, uri)
-
+        val likeIng = Intent(Intent.ACTION_VIEW, Uri.parse("http://instagram.com/_u/$instaUser"))
         likeIng.setPackage("com.instagram.android")
-
         try {
             context.startActivity(likeIng)
         } catch (e: ActivityNotFoundException) {
@@ -59,6 +60,11 @@ class SocialIntent(val context: Context) {
                 )
             )
         }
-
     }
+    // No work
+//    fun launchTokTik() {
+//        val tiktokIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://vm.tiktok.com/$toktikUser"))
+//        tiktokIntent.setPackage("com.zhiliaoapp.musically")
+//        context.startActivity(tiktokIntent)
+//    }
 }
