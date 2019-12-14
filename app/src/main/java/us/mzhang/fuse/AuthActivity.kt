@@ -20,7 +20,7 @@ class AuthActivity : AppCompatActivity() {
         if (!isFormValid()) {
             return
         }
-
+        btnLogin.isEnabled = false
 
         FirebaseAuth.getInstance().signInWithEmailAndPassword(
             etUsername.text.toString(), etPassword.text.toString()
@@ -41,7 +41,7 @@ class AuthActivity : AppCompatActivity() {
             Toast.makeText(this@AuthActivity, "Error: ${it.message}", Toast.LENGTH_LONG).show()
 
         }
-
+        btnLogin.isEnabled = true
 
     }
 
