@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import android.app.ActivityOptions
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -23,6 +22,10 @@ class MainActivity : AppCompatActivity() {
         btnScan.setOnClickListener {
             // launch QRActivity here
             startActivity(Intent(this@MainActivity, QRActivity::class.java))
+        }
+
+        btnProfile.setOnClickListener {
+            startActivity(Intent(this@MainActivity, ProfileActivity::class.java))
         }
     }
 
