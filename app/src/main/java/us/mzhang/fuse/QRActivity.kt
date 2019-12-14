@@ -14,6 +14,17 @@ class QRActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
 
         zxingView.setResultHandler(this)
         zxingView.startCamera()
+
+        // 
+        var social = SocialIntent(this)
+
+        btnTwitter.setOnClickListener {
+            social.launchTwitter()
+        }
+
+        btnSnapchat.setOnClickListener {
+            social.launchSnapchat()
+        }
     }
 
     override fun onStop() {

@@ -15,4 +15,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/btnTwitter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test Twitter"
+        app:layout_constraintStart_toStartOf="@+id/zxingView"
+        app:layout_constraintTop_toBottomOf="@+id/zxingView" />
+
+    <Button
+        android:id="@+id/btnSnapchat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test Snapchat"
+        app:layout_constraintEnd_toEndOf="@+id/zxingView"
+        app:layout_constraintTop_toBottomOf="@+id/zxingView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
