@@ -25,6 +25,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val currUser = intent.getSerializableExtra("USER")
+
         btnScan.isEnabled = false
         requestNeededPermission()
 
@@ -34,44 +36,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnProfile.setOnClickListener {
-            openProfilePage()
-        }
-    }
-
-    private fun openProfilePage() {
-        val db = FirebaseFirestore.getInstance()
-        val usersRef = db.collection("users")
-        var query = usersRef.whereEqualTo("uid", FirebaseAuth.getInstance().uid)
-            .limit(1)
-        var currUser = user()
-        query.get().addOnSuccessListener { users ->
-            if (users.isEmpty) {
-                currUser = user(
-                    FirebaseAuth.getInstance().uid,
-                    "",
-                    "",
-                    "",
-                    "",
-                    ""
-                )
-                usersRef.add(
-                    currUser!!
-                )
-            } else {
-                Toast.makeText(this@MainActivity, "works", Toast.LENGTH_LONG).show()
-                currUser = users.toObjects(user::class.java)[0]
-            }
             var intent = Intent(this@MainActivity, ProfileActivity::class.java)
             intent.putExtra("USER", currUser)
             startActivity(intent)
-        }.addOnFailureListener {
-            Toast.makeText(
-                this@MainActivity,
-                "Sorry we are having issues opening profile right noe",
-                Toast.LENGTH_LONG
-            ).show()
         }
-
         var text =
             FirebaseAuth.getInstance().currentUser!!.uid // Whatever you need to encode in the QR code
         var multiFormatWriter = MultiFormatWriter();
@@ -83,8 +51,6 @@ class MainActivity : AppCompatActivity() {
         } catch (e: WriterException) {
             e.printStackTrace();
         }
-
-
     }
 
     private fun requestNeededPermission() {

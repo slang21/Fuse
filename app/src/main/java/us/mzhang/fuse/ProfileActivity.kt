@@ -20,7 +20,7 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private fun loadUserLinks(currUser: user) {
-        tvUserId.text = currUser!!.uid
+        tvUserId.text = FirebaseAuth.getInstance().currentUser.displayName
     }
 
 }

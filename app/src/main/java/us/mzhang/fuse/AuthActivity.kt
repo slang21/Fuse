@@ -7,9 +7,13 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_login.*
 
 class AuthActivity : AppCompatActivity() {
+
+    val db = FirebaseFirestore.getInstance()
+    val usersRef = db.collection("users")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,13 +32,26 @@ class AuthActivity : AppCompatActivity() {
 
             val user = it.user
 
-            startActivity(
-                Intent(
+            var query = usersRef.whereEqualTo("uid", user.uid)
+                .limit(1)
+            query.get().addOnSuccessListener { users ->
+                var currUser = users.toObjects(us.mzhang.fuse.data.user::class.java)[0]
+                var intent = Intent(
                     this@AuthActivity,
                     MainActivity::class.java
                 )
-            )
-            finish()
+                intent.putExtra("USER", currUser)
+                startActivity(
+                    intent
+                )
+                finish()
+            }.addOnFailureListener {
+                Toast.makeText(
+                    this@AuthActivity,
+                    "Error retrieving profile",
+                    Toast.LENGTH_LONG
+                )
+            }
 
         }.addOnFailureListener {
 
@@ -71,6 +88,18 @@ class AuthActivity : AppCompatActivity() {
             ).addOnSuccessListener {
                 val user = it.user
 
+                var currUser = us.mzhang.fuse.data.user(
+                    user.uid,
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                )
+                usersRef.add(
+                    currUser!!
+                )
+
                 user.updateProfile(
                     UserProfileChangeRequest.Builder()
                         .setDisplayName(userNameFromEmail(etUsername.text.toString()))
@@ -81,13 +110,7 @@ class AuthActivity : AppCompatActivity() {
                     "Welcome ${user.displayName.toString()}}",
                     Toast.LENGTH_LONG
                 ).show()
-                startActivity(
-                    Intent(
-                        this@AuthActivity,
-                        MainActivity::class.java
-                    )
-                )
-                finish()
+                loginClick(btnLogin)
             }.addOnFailureListener {
                 Toast.makeText(this@AuthActivity, "Error: ${it.message}", Toast.LENGTH_LONG).show()
             }
