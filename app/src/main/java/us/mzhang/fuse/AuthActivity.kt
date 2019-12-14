@@ -34,6 +34,7 @@ class AuthActivity : AppCompatActivity() {
                     MainActivity::class.java
                 )
             )
+            finish()
 
         }.addOnFailureListener {
 
