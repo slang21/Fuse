@@ -10,6 +10,7 @@ class SocialIntent(val context: Context) {
 
     val twitterUser = "jack"
     val snapchatId = "testing123"
+    val instaUser = "jimmychin"
 
     fun launchTwitter() {
         try {
@@ -36,6 +37,25 @@ class SocialIntent(val context: Context) {
         } catch (e: Exception) {
             context.startActivity(Intent(Intent.ACTION_VIEW,
                     Uri.parse("https://snapchat.com/add/$snapchatId")
+                )
+            )
+        }
+
+    }
+
+    fun launchInstagram() {
+        val uri = Uri.parse("http://instagram.com/_u/$instaUser")
+        val likeIng = Intent(Intent.ACTION_VIEW, uri)
+
+        likeIng.setPackage("com.instagram.android")
+
+        try {
+            context.startActivity(likeIng)
+        } catch (e: ActivityNotFoundException) {
+            context.startActivity(
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("http://instagram.com/$instaUser")
                 )
             )
         }
