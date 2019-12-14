@@ -7,7 +7,13 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.google.firebase.auth.FirebaseAuth
+import com.google.zxing.BarcodeFormat
+import com.google.zxing.MultiFormatWriter
+import com.google.zxing.WriterException
+import com.google.zxing.common.BitMatrix
 import kotlinx.android.synthetic.main.activity_main.*
+import com.journeyapps.barcodescanner.BarcodeEncoder
 
 
 class MainActivity : AppCompatActivity() {
@@ -27,6 +33,19 @@ class MainActivity : AppCompatActivity() {
         btnProfile.setOnClickListener {
             startActivity(Intent(this@MainActivity, ProfileActivity::class.java))
         }
+
+        var text = FirebaseAuth.getInstance().currentUser!!.uid // Whatever you need to encode in the QR code
+        var multiFormatWriter = MultiFormatWriter();
+        try {
+            var bitMatrix = multiFormatWriter.encode(text, BarcodeFormat.QR_CODE,250,250);
+            var barcodeEncoder = BarcodeEncoder();
+            var bitmap = barcodeEncoder.createBitmap(bitMatrix);
+            ivQR.setImageBitmap(bitmap);
+        } catch (e: WriterException) {
+            e.printStackTrace();
+        }
+
+
     }
 
     private fun requestNeededPermission() {
