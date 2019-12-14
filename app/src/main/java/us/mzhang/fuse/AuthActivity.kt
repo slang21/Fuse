@@ -87,6 +87,7 @@ class AuthActivity : AppCompatActivity() {
                         MainActivity::class.java
                     )
                 )
+                finish()
             }.addOnFailureListener {
                 Toast.makeText(this@AuthActivity, "Error: ${it.message}", Toast.LENGTH_LONG).show()
             }
