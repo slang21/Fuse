@@ -24,7 +24,7 @@ class NewFriendDialog : DialogFragment() {
 
         var newFriend: User = (arguments?.getSerializable("USER") as User)
 
-        builder.setTitle(newFriend.uid)
+        builder.setTitle(newFriend.username)
 
         val rootView = requireActivity().layoutInflater.inflate(
             R.layout.new_friend_layout, null
