@@ -9,82 +9,31 @@ import us.mzhang.fuse.data.User
 
 class SocialIntent(context: Context, user: User) {
 
-//    val twitterUser = "jack"
-//    val snapchatId = "testing123"
-//    val instaUser = "jimmychin"
     val context = context
     val user = user
-
 
     fun launchIntent(mediaType: String) {
         var username = user.socialSet.get(mediaType)
         var url = ""
+        var playUrl = ""
         if (mediaType == "snapchat") {
             url = "https://snapchat.com/add/$username"
+            playUrl = "com.snapchat.android"
         } else if (mediaType == "twitter") {
             url = "twitter://user?screen_name=$username"
+            playUrl = "com.twitter.android"
         } else if (mediaType == "instagram") {
             url = "http://instagram.com/_u/$username"
+            playUrl = "com.instagram.android"
         }
         try {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
             if (mediaType == "snapchat") intent.setPackage("com.snapchat.android")
-            else if (mediaType == "") intent.setPackage("com.instagram.android")
+            else if (mediaType == "instagram") intent.setPackage("com.instagram.android")
             context.startActivity(intent)
         } catch (e: ActivityNotFoundException) {
-            // launch app store
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$playUrl"))
+            context.startActivity(intent)
         }
     }
-
-//    fun launchTwitter() {
-//        try {
-//            val intent = Intent(
-//                Intent.ACTION_VIEW,
-//                Uri.parse("twitter://user?screen_name=$twitterUser")
-//            )
-//            context.startActivity(intent)
-//        } catch (e: ActivityNotFoundException) {
-//            context.startActivity(
-//                Intent(
-//                    Intent.ACTION_VIEW,
-//                    Uri.parse("https://twitter.com/#!/$twitterUser")
-//                )
-//            )
-//        }
-//    }
-//
-//    fun launchSnapchat() {
-//        try {
-//            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://snapchat.com/add/$snapchatId"))
-//            intent.setPackage("com.snapchat.android")
-//            context.startActivity(intent)
-//        } catch (e: Exception) {
-//            context.startActivity(Intent(Intent.ACTION_VIEW,
-//                    Uri.parse("https://snapchat.com/add/$snapchatId")
-//                )
-//            )
-//        }
-//
-//    }
-//
-//    fun launchInstagram() {
-//        val likeIng = Intent(Intent.ACTION_VIEW, Uri.parse("http://instagram.com/_u/$instaUser"))
-//        likeIng.setPackage("com.instagram.android")
-//        try {
-//            context.startActivity(likeIng)
-//        } catch (e: ActivityNotFoundException) {
-//            context.startActivity(
-//                Intent(
-//                    Intent.ACTION_VIEW,
-//                    Uri.parse("http://instagram.com/$instaUser")
-//                )
-//            )
-//        }
-//    }
-    // No work
-//    fun launchTokTik() {
-//        val tiktokIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://vm.tiktok.com/$toktikUser"))
-//        tiktokIntent.setPackage("com.zhiliaoapp.musically")
-//        context.startActivity(tiktokIntent)
-//    }
 }

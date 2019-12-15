@@ -46,12 +46,12 @@ class MediaAdapter : RecyclerView.Adapter<MediaAdapter.ViewHolder> {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var media = mediaList.get(holder.adapterPosition)
 
-        if (media == "snapchat") {
-            holder.ivIcon.setImageResource(R.drawable.ic_action_facebook)
+        if (media == "instagram") {
+            holder.ivIcon.setImageResource(R.drawable.ig_glyph_fill)
         } else if (media == "twitter") {
             holder.ivIcon.setImageResource(R.drawable.ic_action_twitter)
-        } else {
-//            holder.ivShopping.setImageResource(R.drawable.ic_action_headphones)
+        } else if (media == "snapchat") {
+            holder.ivIcon.setImageResource(R.drawable.snap_ghost_yellow)
         }
 
         if (media in user.socialSet) {
