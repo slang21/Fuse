@@ -42,6 +42,7 @@ class NewFriendDialog : DialogFragment() {
         )
 
         recyclerView.addItemDecoration(itemDecoration)
+        builder.setView(rootView)
 
 
         return builder.create()
