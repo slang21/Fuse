@@ -35,7 +35,7 @@ class AuthActivity : AppCompatActivity() {
             var query = usersRef.whereEqualTo("uid", user.uid)
                 .limit(1)
             query.get().addOnSuccessListener { users ->
-                var currUser = users.toObjects(us.mzhang.fuse.data.user::class.java)[0]
+                var currUser = users.toObjects(us.mzhang.fuse.data.User::class.java)[0]
                 var intent = Intent(
                     this@AuthActivity,
                     MainActivity::class.java
@@ -88,26 +88,28 @@ class AuthActivity : AppCompatActivity() {
             ).addOnSuccessListener {
                 val user = it.user
 
-                var currUser = us.mzhang.fuse.data.user(
+                var displayName = userNameFromEmail(etUsername.text.toString())
+
+                user.updateProfile(
+                    UserProfileChangeRequest.Builder()
+                        .setDisplayName(displayName)
+                        .build()
+                )
+
+                var initArr = mutableMapOf<String, String>()
+
+                var currUser = us.mzhang.fuse.data.User(
                     user.uid,
-                    "",
-                    "",
-                    "",
-                    "",
-                    ""
+                    displayName,
+                    initArr
                 )
                 usersRef.add(
                     currUser!!
                 )
 
-                user.updateProfile(
-                    UserProfileChangeRequest.Builder()
-                        .setDisplayName(userNameFromEmail(etUsername.text.toString()))
-                        .build()
-                )
                 Toast.makeText(
                     this@AuthActivity,
-                    "Welcome ${user.displayName.toString()}}",
+                    "Welcome $displayName",
                     Toast.LENGTH_LONG
                 ).show()
                 loginClick(btnLogin)

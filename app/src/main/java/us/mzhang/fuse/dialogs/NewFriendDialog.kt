@@ -7,9 +7,8 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import kotlinx.android.synthetic.main.activity_profile.view.*
-import kotlinx.android.synthetic.main.new_friend_layout.*
 import us.mzhang.fuse.R
-import us.mzhang.fuse.data.user
+import us.mzhang.fuse.data.User
 
 class NewFriendDialog : DialogFragment() {
 
@@ -23,7 +22,7 @@ class NewFriendDialog : DialogFragment() {
 
         val builder = AlertDialog.Builder(requireContext())
 
-        var newFriend: user = (arguments?.getSerializable("USER") as user)
+        var newFriend: User = (arguments?.getSerializable("USER") as User)
 
         builder.setTitle(newFriend.uid)
 
@@ -32,7 +31,7 @@ class NewFriendDialog : DialogFragment() {
         )
 
         tvUserId = rootView.tvUserId
-        tvUserId.text = newFriend.uid
+        tvUserId.text = newFriend.username
 
 
         return builder.create()

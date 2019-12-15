@@ -3,23 +3,32 @@ package us.mzhang.fuse.dialogs
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
-import android.provider.MediaStore
 import android.widget.EditText
-import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import kotlinx.android.synthetic.main.add_social_layout.view.*
-import us.mzhang.fuse.ProfileActivity.Companion.KEY_USER
 import us.mzhang.fuse.R
+import java.lang.RuntimeException
 
-class AddSocialMedia(var username: String) : DialogFragment() {
+class AddSocialMedia(var username: String, val media: String) : DialogFragment() {
 
     interface MediaHandler {
-        fun mediaAdded(username: String)
-        fun mediaEdited(username: String)
+        fun updateMedia(username: String, media: String)
     }
 
     private lateinit var mediaHandler: MediaHandler
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        if (context is MediaHandler) {
+            mediaHandler = context
+        } else {
+            throw RuntimeException(
+                "Does not implement MediaHandler interface"
+            )
+        }
+    }
 
     private lateinit var etUsername: EditText
 
@@ -34,7 +43,7 @@ class AddSocialMedia(var username: String) : DialogFragment() {
         etUsername = rootView.etUsername
         builder.setView(rootView)
 
-        if (username != "default here") {
+        if (username != "N/A") {
             etUsername.setText(username)
         }
 
@@ -54,13 +63,12 @@ class AddSocialMedia(var username: String) : DialogFragment() {
                 handleMediaAdd()
                 (dialog as AlertDialog).dismiss()
             } else {
-                etUsername.error = "Please specify a username"
+                etUsername.error = "Please enter a username"
             }
         }
     }
 
     fun handleMediaAdd() {
-        // tv.text = etUsername.text.toString()
-        // save username to firebase
+        mediaHandler.updateMedia(etUsername.text.toString(), media)
     }
 }

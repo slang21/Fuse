@@ -1,13 +1,12 @@
 package us.mzhang.fuse
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.zxing.Result
 import kotlinx.android.synthetic.main.activity_qr.*
 import me.dm7.barcodescanner.zxing.ZXingScannerView
-import us.mzhang.fuse.data.user
+import us.mzhang.fuse.data.User
 import us.mzhang.fuse.dialogs.NewFriendDialog
 
 
@@ -54,7 +53,7 @@ class QRActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
         var query = usersRef.whereEqualTo("uid", uid)
             .limit(1)
         query.get().addOnSuccessListener { users ->
-            var friend = users.toObjects(us.mzhang.fuse.data.user::class.java)[0]
+            var friend = users.toObjects(User::class.java)[0]
             var newFriend = NewFriendDialog()
             val bundle = Bundle()
             bundle.putSerializable("USER", friend)
