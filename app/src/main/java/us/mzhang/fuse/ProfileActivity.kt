@@ -26,6 +26,13 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun loadUserLinks(currUser: user) {
         tvUserId.text = FirebaseAuth.getInstance().currentUser?.displayName
+
+        tvFacebookUsername.text = if (currUser.facebook == "") "N/A" else currUser.facebook; btnAddFacebook.setImageResource(R.drawable.ic_action_edit)
+        tvTwitterUsername.text = if (currUser.twitter == "") "N/A" else currUser.twitter; btnAddTwitter.setImageResource(R.drawable.ic_action_edit)
+        tvSnapchatUsername.text = if (currUser.snapchat == "") "N/A" else currUser.snapchat; btnAddInstagram.setImageResource(R.drawable.ic_action_edit)
+        tvInstagramUsername.text = if (currUser.instagram == "") "N/A" else currUser.instagram; btnAddSnapchat.setImageResource(R.drawable.ic_action_edit)
+        tvLinkedInUsername.text = if (currUser.linkedin == "") "N/A" else currUser.linkedin; btnAddLinkedIn.setImageResource(R.drawable.ic_action_edit)
+
     }
 
     fun showNewMediaDialog() {
