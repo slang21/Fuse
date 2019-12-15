@@ -4,17 +4,32 @@ import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import androidx.core.content.ContextCompat.startActivity
+import us.mzhang.fuse.data.User
 
 
-
-
-class SocialIntent(val context: Context) {
+class SocialIntent(context: Context, user: User) {
 
     val twitterUser = "jack"
     val snapchatId = "testing123"
     val instaUser = "jimmychin"
-    val toktikUser = "piffpeterson"
+    val context = context
+    val user = user
+
+
+    fun launchIntent(mediaType: String) {
+        if (mediaType == "snapchat") {
+            // vars
+        } else if (mediaType == "twitter") {
+            // vars
+        } else {
+            // vars
+        }
+        try {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("twitter://user?screen_name=$twitterUser"))
+        } catch (e: ActivityNotFoundException) {
+            // launch app store
+        }
+    }
 
     fun launchTwitter() {
         try {
