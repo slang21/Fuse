@@ -32,7 +32,7 @@ class ProfileActivity : AppCompatActivity(), AddSocialDialog.MediaHandler {
         userQuery = usersRef.whereEqualTo("uid", currUser.uid)
         initRecyclerView()
 
-        tvUserId.text = FirebaseAuth.getInstance().currentUser?.displayName
+        tvUserId.text = currUser.username
 
 //        loadUserLinks(currUser)
     }
