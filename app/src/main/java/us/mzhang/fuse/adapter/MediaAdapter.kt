@@ -60,6 +60,10 @@ class MediaAdapter : RecyclerView.Adapter<MediaAdapter.ViewHolder> {
         }
 
         if (context is ProfileActivity) {
+            if (holder.tvUsername.text != "N/A") {
+                holder.btnAddEdit.setImageResource(R.drawable.ic_action_edit)
+            }
+            
             holder.btnAddEdit.setOnClickListener {
                 context.showMediaDialog(
                     holder.tvUsername.text.toString(), media
