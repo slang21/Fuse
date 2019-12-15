@@ -49,21 +49,6 @@ class ProfileActivity : AppCompatActivity(), AddSocialMedia.MediaHandler {
         recyclerView.addItemDecoration(itemDecoration)
     }
 
-//    private fun loadUserLinks(currUser: User) {
-//        tvUserId.text = FirebaseAuth.getInstance().currentUser?.displayName
-//
-//        tvFacebookUsername.text =
-//            if ("facebook" in currUser.socialSet) currUser.socialSet.get("facebook") else "N/A"
-//        tvTwitterUsername.text =
-//            if ("twitter" in currUser.socialSet) currUser.socialSet.get("twitter") else "N/A"
-//        tvSnapchatUsername.text =
-//            if ("snapchat" in currUser.socialSet) currUser.socialSet.get("snapchat") else "N/A"
-//        tvInstagramUsername.text =
-//            if ("instagram" in currUser.socialSet) currUser.socialSet.get("instagram") else "N/A"
-//        tvLinkedInUsername.text =
-//            if ("linkedin" in currUser.socialSet) currUser.socialSet.get("linkedin") else "N/A"
-//
-//    }
 
     fun showMediaDialog(user: String, media: String) {
         AddSocialMedia(user, media).show(supportFragmentManager, TAG_ADD)
@@ -72,7 +57,6 @@ class ProfileActivity : AppCompatActivity(), AddSocialMedia.MediaHandler {
     override fun updateMedia(username: String, media: String) {
         currUser.socialSet.put(media, username)
         usersRef.document(currUser.uid!!).update("socialSet", currUser.socialSet)
+        initRecyclerView()
     }
-
-
 }
