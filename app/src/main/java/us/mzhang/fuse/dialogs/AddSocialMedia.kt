@@ -35,7 +35,7 @@ class AddSocialMedia(var username: String, val media: String) : DialogFragment()
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val builder = AlertDialog.Builder(requireContext())
 
-        builder.setTitle("Add media")
+        builder.setTitle("Add " + media.capitalize())
 
         val rootView = requireActivity().layoutInflater.inflate(
             R.layout.add_social_layout, null
