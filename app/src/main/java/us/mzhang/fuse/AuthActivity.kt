@@ -35,7 +35,7 @@ class AuthActivity : AppCompatActivity() {
             var query = usersRef.whereEqualTo("uid", user.uid)
                 .limit(1)
             query.get().addOnSuccessListener { users ->
-                var currUser = users.toObjects(us.mzhang.fuse.data.user::class.java)[0]
+                var currUser = users.toObjects(us.mzhang.fuse.data.User::class.java)[0]
                 var intent = Intent(
                     this@AuthActivity,
                     MainActivity::class.java
@@ -88,7 +88,7 @@ class AuthActivity : AppCompatActivity() {
             ).addOnSuccessListener {
                 val user = it.user
 
-                var currUser = us.mzhang.fuse.data.user(
+                var currUser = us.mzhang.fuse.data.User(
                     user.uid,
                     "",
                     "",
