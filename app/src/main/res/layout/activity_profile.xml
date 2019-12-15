@@ -48,155 +48,6 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent=".8" />
 
-    <ImageView
-        android:id="@+id/iconFacebook"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/ic_action_facebook"
-        app:layout_constraintLeft_toLeftOf="@id/guidelineLeft"
-        app:layout_constraintTop_toBottomOf="@id/guidelineLinks"/>
-
-    <ImageView
-        android:id="@+id/iconTwitter"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintLeft_toLeftOf="@id/guidelineLeft"
-        app:layout_constraintTop_toBottomOf="@id/iconFacebook"/>
-
-    <ImageView
-        android:id="@+id/iconSnapchat"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintLeft_toLeftOf="@id/guidelineLeft"
-        app:layout_constraintTop_toBottomOf="@id/iconTwitter"/>
-
-    <ImageView
-        android:id="@+id/iconInstagram"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintLeft_toLeftOf="@id/guidelineLeft"
-        app:layout_constraintTop_toBottomOf="@id/iconSnapchat"/>
-
-    <ImageView
-        android:id="@+id/iconLinkedIn"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintLeft_toLeftOf="@id/guidelineLeft"
-        app:layout_constraintTop_toBottomOf="@id/iconInstagram"/>
-
-    <TextView
-        android:id="@+id/tvFacebookUsername"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:text="Username"
-        android:gravity="center"
-        android:textSize="20sp"
-        app:layout_constraintRight_toLeftOf="@+id/btnAddFacebook"
-        app:layout_constraintLeft_toRightOf="@id/iconFacebook"
-        app:layout_constraintTop_toTopOf="@id/iconFacebook" />
-
-    <TextView
-        android:id="@+id/tvTwitterUsername"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:textSize="20sp"
-        android:text="Username"
-        android:gravity="center"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintLeft_toRightOf="@id/iconTwitter"
-        app:layout_constraintRight_toLeftOf="@id/btnAddTwitter"
-        app:layout_constraintTop_toTopOf="@id/iconTwitter"/>
-
-    <TextView
-        android:id="@+id/tvSnapchatUsername"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:textSize="20sp"
-        android:text="Username"
-        android:gravity="center"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintLeft_toRightOf="@id/iconSnapchat"
-        app:layout_constraintRight_toLeftOf="@id/btnAddSnapchat"
-        app:layout_constraintTop_toTopOf="@id/iconSnapchat"/>
-
-    <TextView
-        android:id="@+id/tvInstagramUsername"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:textSize="20sp"
-        android:text="Username"
-        android:gravity="center"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintLeft_toRightOf="@id/iconInstagram"
-        app:layout_constraintRight_toLeftOf="@id/btnAddInstagram"
-        app:layout_constraintTop_toTopOf="@id/iconInstagram"/>
-
-    <TextView
-        android:id="@+id/tvLinkedInUsername"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:textSize="20sp"
-        android:text="Username"
-        android:gravity="center"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintLeft_toRightOf="@id/iconLinkedIn"
-        app:layout_constraintRight_toLeftOf="@id/btnAddLinkedIn"
-        app:layout_constraintTop_toTopOf="@id/iconLinkedIn"/>
-
-    <ImageButton
-        android:id="@+id/btnAddFacebook"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_action_add"
-        app:layout_constraintTop_toTopOf="@id/iconFacebook"
-        app:layout_constraintRight_toRightOf="@id/guidelineRight"/>
-
-    <ImageButton
-        android:id="@+id/btnAddTwitter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_action_add"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintTop_toTopOf="@id/iconTwitter"
-        app:layout_constraintRight_toRightOf="@id/guidelineRight"/>
-
-    <ImageButton
-        android:id="@+id/btnAddSnapchat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_action_add"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintTop_toTopOf="@id/iconSnapchat"
-        app:layout_constraintRight_toRightOf="@id/guidelineRight"/>
-
-    <ImageButton
-        android:id="@+id/btnAddInstagram"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_action_add"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintTop_toTopOf="@id/iconInstagram"
-        app:layout_constraintRight_toRightOf="@id/guidelineRight"/>
-
-    <ImageButton
-        android:id="@+id/btnAddLinkedIn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_action_add"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintTop_toTopOf="@id/iconLinkedIn"
-        app:layout_constraintRight_toRightOf="@id/guidelineRight"/>
-
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineLinks"
@@ -204,5 +55,14 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent=".27" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
+        app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+        app:layout_constraintTop_toTopOf="@+id/guidelineLinks" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
