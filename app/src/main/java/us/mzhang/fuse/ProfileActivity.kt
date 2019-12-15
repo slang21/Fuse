@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.activity_profile.*
 import us.mzhang.fuse.adapter.MediaAdapter
 import us.mzhang.fuse.data.User
@@ -15,6 +17,10 @@ class ProfileActivity : AppCompatActivity(), AddSocialDialog.MediaHandler {
         val TAG_ADD = "TAG_ADD"
     }
 
+    val db = FirebaseFirestore.getInstance()
+    val usersRef = db.collection("users")
+    lateinit var userQuery: Query
+
     lateinit var currUser: User
     lateinit var mediaAdapter: MediaAdapter
 
@@ -23,7 +29,7 @@ class ProfileActivity : AppCompatActivity(), AddSocialDialog.MediaHandler {
         setContentView(R.layout.activity_profile)
 
         currUser = intent.getSerializableExtra("USER") as User
-
+        userQuery = usersRef.whereEqualTo("uid", currUser.uid)
         initRecyclerView()
 
         tvUserId.text = FirebaseAuth.getInstance().currentUser?.displayName
@@ -64,7 +70,8 @@ class ProfileActivity : AppCompatActivity(), AddSocialDialog.MediaHandler {
     }
 
     override fun updateMedia(username: String, media: String) {
-        // update firebase with media string as key, username as value
+        currUser.socialSet.put(media, username)
+        usersRef.document(currUser.uid!!).update("socialSet", currUser.socialSet)
     }
 
 
