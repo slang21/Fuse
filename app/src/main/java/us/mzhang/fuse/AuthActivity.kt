@@ -103,7 +103,7 @@ class AuthActivity : AppCompatActivity() {
                     displayName,
                     initArr
                 )
-                usersRef.add(
+                usersRef.document(user.uid).set(
                     currUser!!
                 )
 
