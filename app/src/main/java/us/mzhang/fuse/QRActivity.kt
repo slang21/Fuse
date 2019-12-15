@@ -35,6 +35,11 @@ class QRActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
 
     }
 
+    override fun onResume() {
+        super.onStart()
+        zxingView.startCamera()
+    }
+
     override fun onStop() {
         super.onStop()
         zxingView.stopCamera()
