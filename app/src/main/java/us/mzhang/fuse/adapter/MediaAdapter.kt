@@ -49,7 +49,7 @@ class MediaAdapter : RecyclerView.Adapter<MediaAdapter.ViewHolder> {
         if (media == "snapchat") {
             holder.ivIcon.setImageResource(R.drawable.ic_action_facebook)
         } else if (media == "twitter") {
-//            holder.ivShopping.setImageResource(R.drawable.ic_action_tshirt)
+            holder.ivIcon.setImageResource(R.drawable.ic_action_twitter)
         } else {
 //            holder.ivShopping.setImageResource(R.drawable.ic_action_headphones)
         }
@@ -62,7 +62,7 @@ class MediaAdapter : RecyclerView.Adapter<MediaAdapter.ViewHolder> {
 
         if (context is ProfileActivity) {
             holder.btnAddEdit.setOnClickListener {
-                (context as ProfileActivity).showMediaDialog(
+                context.showMediaDialog(
                     holder.tvUsername.text.toString(), media
                 )
             }
