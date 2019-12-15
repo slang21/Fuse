@@ -32,6 +32,9 @@ class NewFriendDialog : DialogFragment() {
         )
 
         mediaAdapter = MediaAdapter(context!!, newFriend)
+
+        mediaAdapter.mediaList = newFriend.socialSet.keys.toMutableList()
+
         rootView.recyclerView.adapter = mediaAdapter
         builder.setView(rootView)
 
