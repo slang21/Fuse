@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.add_social_layout.view.*
 import us.mzhang.fuse.R
 import java.lang.RuntimeException
 
-class AddSocialMedia(var username: String, val media: String) : DialogFragment() {
+class AddSocialDialog(var username: String, val media: String) : DialogFragment() {
 
     interface MediaHandler {
         fun updateMedia(username: String, media: String)

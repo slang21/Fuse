@@ -9,9 +9,9 @@ import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.activity_profile.*
 import us.mzhang.fuse.adapter.MediaAdapter
 import us.mzhang.fuse.data.User
-import us.mzhang.fuse.dialogs.AddSocialMedia
+import us.mzhang.fuse.dialogs.AddSocialDialog
 
-class ProfileActivity : AppCompatActivity(), AddSocialMedia.MediaHandler {
+class ProfileActivity : AppCompatActivity(), AddSocialDialog.MediaHandler {
 
     companion object {
         val TAG_ADD = "TAG_ADD"
@@ -51,7 +51,7 @@ class ProfileActivity : AppCompatActivity(), AddSocialMedia.MediaHandler {
 
 
     fun showMediaDialog(user: String, media: String) {
-        AddSocialMedia(user, media).show(supportFragmentManager, TAG_ADD)
+        AddSocialDialog(user, media).show(supportFragmentManager, TAG_ADD)
     }
 
     override fun updateMedia(username: String, media: String) {

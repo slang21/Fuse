@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import us.mzhang.fuse.R
 import kotlinx.android.synthetic.main.profile_media_row_layout.view.*
 import us.mzhang.fuse.ProfileActivity
+import us.mzhang.fuse.QRActivity
+import us.mzhang.fuse.SocialIntent
 import us.mzhang.fuse.data.User
 
 class MediaAdapter : RecyclerView.Adapter<MediaAdapter.ViewHolder> {
@@ -58,10 +60,19 @@ class MediaAdapter : RecyclerView.Adapter<MediaAdapter.ViewHolder> {
             holder.tvUsername.text = "N/A"
         }
 
-        holder.btnAddEdit.setOnClickListener {
-            (context as ProfileActivity).showMediaDialog(
-                holder.tvUsername.text.toString(), media
-            )
+        if (context is ProfileActivity) {
+            holder.btnAddEdit.setOnClickListener {
+                (context as ProfileActivity).showMediaDialog(
+                    holder.tvUsername.text.toString(), media
+                )
+            }
+        } else if (context is QRActivity) {
+            holder.btnAddEdit.setOnClickListener {
+                // social intent goes here
+//                var social = SocialIntent(context, user)
+//                social.launchIntent(media)
+            }
         }
+
     }
 }
