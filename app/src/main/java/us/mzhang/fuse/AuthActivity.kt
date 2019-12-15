@@ -97,7 +97,6 @@ class AuthActivity : AppCompatActivity() {
                 )
 
                 var initArr = mutableMapOf<String, String>()
-                initArr.put("test", "test")
 
                 var currUser = us.mzhang.fuse.data.User(
                     user.uid,
@@ -110,7 +109,7 @@ class AuthActivity : AppCompatActivity() {
 
                 Toast.makeText(
                     this@AuthActivity,
-                    "Welcome ${user.displayName.toString()}",
+                    "Welcome $displayName",
                     Toast.LENGTH_LONG
                 ).show()
                 loginClick(btnLogin)

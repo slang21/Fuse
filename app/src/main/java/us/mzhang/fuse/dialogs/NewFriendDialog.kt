@@ -31,7 +31,7 @@ class NewFriendDialog : DialogFragment() {
         )
 
         tvUserId = rootView.tvUserId
-        tvUserId.text = newFriend.uid
+        tvUserId.text = newFriend.username
 
 
         return builder.create()
