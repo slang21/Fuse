@@ -1,7 +1,6 @@
 package us.mzhang.fuse.adapter
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -68,7 +67,6 @@ class MediaAdapter : RecyclerView.Adapter<MediaAdapter.ViewHolder> {
             }
         } else if (context is QRActivity) {
             holder.btnAddEdit.setOnClickListener {
-                // social intent goes here
                 var social = SocialIntent(context, user)
                 social.launchIntent(media)
             }

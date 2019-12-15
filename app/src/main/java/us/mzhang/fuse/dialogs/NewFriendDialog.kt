@@ -1,9 +1,7 @@
 package us.mzhang.fuse.dialogs
 
 import android.app.Dialog
-import android.content.Context
 import android.os.Bundle
-import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import kotlinx.android.synthetic.main.new_friend_layout.view.*
@@ -12,10 +10,6 @@ import us.mzhang.fuse.adapter.MediaAdapter
 import us.mzhang.fuse.data.User
 
 class NewFriendDialog : DialogFragment() {
-
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
-    }
 
     lateinit var mediaAdapter: MediaAdapter
 
@@ -40,9 +34,5 @@ class NewFriendDialog : DialogFragment() {
 
 
         return builder.create()
-    }
-
-    override fun onResume() {
-        super.onResume()
     }
 }

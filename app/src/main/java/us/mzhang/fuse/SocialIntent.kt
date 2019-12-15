@@ -7,10 +7,7 @@ import android.net.Uri
 import us.mzhang.fuse.data.User
 
 
-class SocialIntent(context: Context, user: User) {
-
-    val context = context
-    val user = user
+class SocialIntent(val context: Context, val user: User) {
 
     fun launchIntent(mediaType: String) {
         var username = user.socialSet.get(mediaType)

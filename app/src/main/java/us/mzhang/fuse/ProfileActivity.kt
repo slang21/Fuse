@@ -34,19 +34,11 @@ class ProfileActivity : AppCompatActivity(), AddSocialDialog.MediaHandler {
 
         tvUserId.text = currUser.username
 
-//        loadUserLinks(currUser)
     }
 
     private fun initRecyclerView() {
         mediaAdapter = MediaAdapter(this, currUser)
         recyclerView.adapter = mediaAdapter
-
-        var itemDecoration = DividerItemDecoration(
-            this,
-            DividerItemDecoration.VERTICAL
-        )
-
-        recyclerView.addItemDecoration(itemDecoration)
     }
 
 
