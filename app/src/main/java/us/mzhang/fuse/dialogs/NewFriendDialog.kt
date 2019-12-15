@@ -6,8 +6,11 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
+import androidx.recyclerview.widget.DividerItemDecoration
+import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.activity_profile.view.*
 import us.mzhang.fuse.R
+import us.mzhang.fuse.adapter.MediaAdapter
 import us.mzhang.fuse.data.User
 
 class NewFriendDialog : DialogFragment() {
@@ -16,7 +19,7 @@ class NewFriendDialog : DialogFragment() {
         super.onAttach(context)
     }
 
-    private lateinit var tvUserId: TextView
+    lateinit var mediaAdapter: MediaAdapter
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
@@ -30,8 +33,15 @@ class NewFriendDialog : DialogFragment() {
             R.layout.new_friend_layout, null
         )
 
-        tvUserId = rootView.tvUserId
-        tvUserId.text = newFriend.username
+        mediaAdapter = MediaAdapter(context!!, newFriend)
+        recyclerView.adapter = mediaAdapter
+
+        var itemDecoration = DividerItemDecoration(
+            context!!,
+            DividerItemDecoration.VERTICAL
+        )
+
+        recyclerView.addItemDecoration(itemDecoration)
 
 
         return builder.create()
