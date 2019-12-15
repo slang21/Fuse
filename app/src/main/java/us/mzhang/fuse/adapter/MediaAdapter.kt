@@ -69,8 +69,8 @@ class MediaAdapter : RecyclerView.Adapter<MediaAdapter.ViewHolder> {
         } else if (context is QRActivity) {
             holder.btnAddEdit.setOnClickListener {
                 // social intent goes here
-//                var social = SocialIntent(context, user)
-//                social.launchIntent(media)
+                var social = SocialIntent(context, user)
+                social.launchIntent(media)
             }
         }
 

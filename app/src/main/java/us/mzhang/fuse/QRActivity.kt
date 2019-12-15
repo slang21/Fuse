@@ -41,7 +41,7 @@ class QRActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
     }
 
     override fun handleResult(qrResult: Result?) {
-        test.text = qrResult?.text
+//        test.text = qrResult?.text
         addFriend(qrResult!!.text)
         zxingView.setResultHandler(this)
         zxingView.startCamera()
