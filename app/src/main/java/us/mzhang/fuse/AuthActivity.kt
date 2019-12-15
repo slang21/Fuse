@@ -88,23 +88,29 @@ class AuthActivity : AppCompatActivity() {
             ).addOnSuccessListener {
                 val user = it.user
 
+                var displayName = userNameFromEmail(etUsername.text.toString())
+
+                user.updateProfile(
+                    UserProfileChangeRequest.Builder()
+                        .setDisplayName(displayName)
+                        .build()
+                )
+
+                var initArr = mutableMapOf<String, String>()
+                initArr.put("test", "test")
+
                 var currUser = us.mzhang.fuse.data.User(
                     user.uid,
-                    user.displayName!!,
-                    mutableMapOf()
+                    displayName,
+                    initArr
                 )
                 usersRef.add(
                     currUser!!
                 )
 
-                user.updateProfile(
-                    UserProfileChangeRequest.Builder()
-                        .setDisplayName(userNameFromEmail(etUsername.text.toString()))
-                        .build()
-                )
                 Toast.makeText(
                     this@AuthActivity,
-                    "Welcome ${user.displayName.toString()}}",
+                    "Welcome ${user.displayName.toString()}",
                     Toast.LENGTH_LONG
                 ).show()
                 loginClick(btnLogin)
