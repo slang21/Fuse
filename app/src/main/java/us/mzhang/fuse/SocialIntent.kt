@@ -28,7 +28,8 @@ class SocialIntent(context: Context, user: User) {
         }
         try {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-            // might have to sed package here :/
+            if (mediaType == "snapchat") intent.setPackage("com.snapchat.android")
+            else if (mediaType == "") intent.setPackage("com.instagram.android")
             context.startActivity(intent)
         } catch (e: ActivityNotFoundException) {
             // launch app store

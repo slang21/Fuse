@@ -6,9 +6,7 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
-import androidx.recyclerview.widget.DividerItemDecoration
-import kotlinx.android.synthetic.main.activity_profile.*
-import kotlinx.android.synthetic.main.activity_profile.view.*
+import kotlinx.android.synthetic.main.new_friend_layout.view.*
 import us.mzhang.fuse.R
 import us.mzhang.fuse.adapter.MediaAdapter
 import us.mzhang.fuse.data.User
@@ -34,14 +32,7 @@ class NewFriendDialog : DialogFragment() {
         )
 
         mediaAdapter = MediaAdapter(context!!, newFriend)
-        recyclerView.adapter = mediaAdapter
-
-        var itemDecoration = DividerItemDecoration(
-            context!!,
-            DividerItemDecoration.VERTICAL
-        )
-
-        recyclerView.addItemDecoration(itemDecoration)
+        rootView.recyclerView.adapter = mediaAdapter
         builder.setView(rootView)
 
 
