@@ -2,11 +2,8 @@ package us.mzhang.fuse.data
 
 import java.io.Serializable
 
-data class User (
+data class User(
     var uid: String? = "",
-    var facebook: String = "",
-    var twitter: String = "",
-    var linkedin: String = "",
-    var snapchat: String = "",
-    var instagram: String = ""
+    var username: String,
+    var socialSet: Map<String, String> = mutableMapOf<String, String>()
 ) : Serializable

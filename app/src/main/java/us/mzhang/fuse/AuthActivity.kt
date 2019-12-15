@@ -90,11 +90,8 @@ class AuthActivity : AppCompatActivity() {
 
                 var currUser = us.mzhang.fuse.data.User(
                     user.uid,
-                    "",
-                    "",
-                    "",
-                    "",
-                    ""
+                    user.displayName!!,
+                    mutableMapOf()
                 )
                 usersRef.add(
                     currUser!!
