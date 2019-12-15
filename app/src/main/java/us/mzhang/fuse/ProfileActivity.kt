@@ -7,8 +7,13 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_profile.*
 import us.mzhang.fuse.data.user
+import us.mzhang.fuse.dialogs.AddSocialMedia
 
 class ProfileActivity : AppCompatActivity() {
+
+    companion object {
+        val TAG_MEDIA = "TAG_MEDIA"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +26,12 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun loadUserLinks(currUser: user) {
         tvUserId.text = FirebaseAuth.getInstance().currentUser?.displayName
+    }
+
+    fun showNewMediaDialog() {
+        // get id of element that called this
+        // from there get left constraint and pass into AddSocialMedia(tv: TextView)
+        AddSocialMedia().show(supportFragmentManager, TAG_MEDIA)
     }
 
 }
