@@ -9,7 +9,6 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView
 import us.mzhang.fuse.data.User
 import us.mzhang.fuse.dialogs.NewFriendDialog
 
-
 class QRActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,24 +18,10 @@ class QRActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
         zxingView.setResultHandler(this)
         zxingView.startCamera()
 
-//        var social = SocialIntent(this)
-//
-//        btnTwitter.setOnClickListener {
-//            social.launchTwitter()
-//        }
-//
-//        btnSnapchat.setOnClickListener {
-//            social.launchSnapchat()
-//        }
-//
-//        btnInsta.setOnClickListener {
-//            social.launchInstagram()
-//        }
-
     }
 
     override fun onResume() {
-        super.onStart()
+        super.onResume()
         zxingView.startCamera()
     }
 
@@ -46,7 +31,6 @@ class QRActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
     }
 
     override fun handleResult(qrResult: Result?) {
-//        test.text = qrResult?.text
         addFriend(qrResult!!.text)
         zxingView.setResultHandler(this)
         zxingView.startCamera()
