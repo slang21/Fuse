@@ -57,6 +57,6 @@ class ProfileActivity : AppCompatActivity(), AddSocialDialog.MediaHandler {
     override fun updateMedia(username: String, media: String) {
         currUser.socialSet.put(media, username)
         usersRef.document(currUser.uid!!).update("socialSet", currUser.socialSet)
-        initRecyclerView()
+        mediaAdapter.notifyDataSetChanged()
     }
 }
