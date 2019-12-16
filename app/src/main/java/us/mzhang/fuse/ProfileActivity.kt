@@ -1,5 +1,6 @@
 package us.mzhang.fuse
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -34,6 +35,9 @@ class ProfileActivity : AppCompatActivity(), AddSocialDialog.MediaHandler {
 
         tvUserId.text = currUser.username
 
+        var intent = Intent()
+        intent.putExtra("USER", currUser)
+        setResult(1, intent)
     }
 
     private fun initRecyclerView() {
@@ -49,6 +53,11 @@ class ProfileActivity : AppCompatActivity(), AddSocialDialog.MediaHandler {
     override fun updateMedia(username: String, media: String) {
         currUser.socialSet.put(media, username)
         usersRef.document(currUser.uid!!).update("socialSet", currUser.socialSet)
+            .addOnSuccessListener {
+                var intent = Intent()
+                intent.putExtra("USER", currUser)
+                setResult(1, intent)
+            }
         mediaAdapter.notifyDataSetChanged()
     }
 }
