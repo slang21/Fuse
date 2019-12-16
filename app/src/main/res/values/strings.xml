@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Fuse</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="new_user">New User?</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="enter_username">Enter username</string>
+    <string name="na">N/A</string>
+    <string name="implement_error">Does not implement MediaHandler interface</string>
+    <string name="add">Add</string>
+    <string name="ok">Ok</string>
+    <string name="please_enter_username">Please enter a username</string>
 </resources>

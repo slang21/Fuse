@@ -25,7 +25,7 @@ class AddSocialDialog(var username: String, val media: String) : DialogFragment(
             mediaHandler = context
         } else {
             throw RuntimeException(
-                "Does not implement MediaHandler interface"
+                getString(R.string.implement_error)
             )
         }
     }
@@ -35,7 +35,7 @@ class AddSocialDialog(var username: String, val media: String) : DialogFragment(
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val builder = AlertDialog.Builder(requireContext())
 
-        builder.setTitle("Add " + media.capitalize())
+        builder.setTitle(getString(R.string.add) + " " + media.capitalize())
 
         val rootView = requireActivity().layoutInflater.inflate(
             R.layout.add_social_layout, null
@@ -43,11 +43,11 @@ class AddSocialDialog(var username: String, val media: String) : DialogFragment(
         etUsername = rootView.etUsername
         builder.setView(rootView)
 
-        if (username != "N/A") {
+        if (username != getString(R.string.na)) {
             etUsername.setText(username)
         }
 
-        builder.setPositiveButton("Ok") {
+        builder.setPositiveButton(getString(R.string.ok)) {
                 _, _ ->
         }
 
@@ -63,7 +63,7 @@ class AddSocialDialog(var username: String, val media: String) : DialogFragment(
                 handleMediaAdd()
                 (dialog as AlertDialog).dismiss()
             } else {
-                etUsername.error = "Please enter a username"
+                etUsername.error = getString(R.string.please_enter_username)
             }
         }
     }
