@@ -8,20 +8,28 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_main.*
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.MultiFormatWriter
 import com.google.zxing.WriterException
 import com.journeyapps.barcodescanner.BarcodeEncoder
+import us.mzhang.fuse.data.User
+import java.io.Serializable
 
 
 class MainActivity : AppCompatActivity() {
+
+    val db = FirebaseFirestore.getInstance()
+    val usersRef = db.collection("users")
+
+    lateinit var currUser: Serializable
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val currUser = intent.getSerializableExtra("USER")
+        currUser = intent.getSerializableExtra("USER")!!
 
         btnScan.isEnabled = false
         requestNeededPermission()
@@ -33,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         btnProfile.setOnClickListener {
             val intent = Intent(this@MainActivity, ProfileActivity::class.java)
             intent.putExtra("USER", currUser)
-            startActivity(intent)
+            startActivityForResult(intent, 1)
         }
         val text =
             FirebaseAuth.getInstance().currentUser!!.uid // Whatever you need to encode in the QR code
@@ -46,6 +54,11 @@ class MainActivity : AppCompatActivity() {
         } catch (e: WriterException) {
             e.printStackTrace()
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        currUser = data!!.getSerializableExtra("USER")!!
     }
 
     private fun requestNeededPermission() {
