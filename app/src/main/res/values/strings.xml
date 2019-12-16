@@ -12,4 +12,10 @@
     <string name="add">Add</string>
     <string name="ok">Ok</string>
     <string name="please_enter_username">Please enter a username</string>
+    <string name="profile_error">Error retrieving profile</string>
+    <string name="empty_field_error">This field can not be empty</string>
+    <string name="qr_read_error">Invalid Fuse QR code</string>
+    <string name="camera_permission">I need it for QR reading</string>
+    <string name="camera_granted">CAMERA perm granted</string>
+    <string name="camera_not_granted">CAMERA perm NOT granted</string>
 </resources>

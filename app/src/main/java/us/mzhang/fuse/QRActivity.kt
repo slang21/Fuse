@@ -2,12 +2,14 @@ package us.mzhang.fuse
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.zxing.Result
 import kotlinx.android.synthetic.main.activity_qr.*
 import me.dm7.barcodescanner.zxing.ZXingScannerView
 import us.mzhang.fuse.data.User
 import us.mzhang.fuse.dialogs.NewFriendDialog
+import java.lang.IndexOutOfBoundsException
 
 class QRActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
 
@@ -42,15 +44,25 @@ class QRActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
         var query = usersRef.whereEqualTo("uid", uid)
             .limit(1)
         query.get().addOnSuccessListener { users ->
-            var friend = users.toObjects(User::class.java)[0]
-            var newFriend = NewFriendDialog()
-            val bundle = Bundle()
-            bundle.putSerializable("USER", friend)
-            newFriend.arguments = bundle
-            newFriend.show(
-                supportFragmentManager,
-                "NEW_FRIEND"
-            )
+            try {
+                val friend = users.toObjects(User::class.java)[0]
+                val newFriend = NewFriendDialog()
+                val bundle = Bundle()
+                bundle.putSerializable("USER", friend)
+                newFriend.arguments = bundle
+                newFriend.show(
+                    supportFragmentManager,
+                    "NEW_FRIEND"
+                )
+            } catch (e: IndexOutOfBoundsException) {
+                Toast.makeText(
+                    this@QRActivity,
+                    getString(R.string.qr_read_error),
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+
+
         }
     }
 }

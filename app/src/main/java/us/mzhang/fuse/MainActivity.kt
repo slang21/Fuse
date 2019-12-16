@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
             ) {
                 Toast.makeText(
                     this,
-                    "I need it for QR reading", Toast.LENGTH_SHORT
+                    getString(R.string.camera_permission), Toast.LENGTH_SHORT
                 ).show()
             }
             ActivityCompat.requestPermissions(
@@ -81,11 +81,11 @@ class MainActivity : AppCompatActivity() {
         when (requestCode) {
             101 -> {
                 if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(this, "CAMERA perm granted", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.camera_granted), Toast.LENGTH_SHORT).show()
 
                     btnScan.isEnabled = true
                 } else {
-                    Toast.makeText(this, "CAMERA perm NOT granted", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.camera_not_granted), Toast.LENGTH_SHORT).show()
                 }
             }
         }

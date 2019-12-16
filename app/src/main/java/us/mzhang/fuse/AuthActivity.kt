@@ -48,9 +48,9 @@ class AuthActivity : AppCompatActivity() {
             }.addOnFailureListener {
                 Toast.makeText(
                     this@AuthActivity,
-                    "Error retrieving profile",
+                    getString(R.string.profile_error),
                     Toast.LENGTH_LONG
-                )
+                ).show()
             }
 
         }.addOnFailureListener {
@@ -63,7 +63,7 @@ class AuthActivity : AppCompatActivity() {
     }
 
     fun prepRegister(v: View) {
-        tvTitle.text = "Register"
+        tvTitle.text = getString(R.string.register)
         btnLogin.visibility = View.GONE
         btnRegister.visibility = View.VISIBLE
         tvRegister.visibility = View.GONE
@@ -71,7 +71,7 @@ class AuthActivity : AppCompatActivity() {
     }
 
     fun prepLogin(v: View) {
-        tvTitle.text = "Login"
+        tvTitle.text = getString(R.string.login)
         btnLogin.visibility = View.VISIBLE
         btnRegister.visibility = View.GONE
         tvRegister.visibility = View.VISIBLE
@@ -124,11 +124,11 @@ class AuthActivity : AppCompatActivity() {
     private fun isFormValid(): Boolean {
         return when {
             etUsername.text.isEmpty() -> {
-                etUsername.error = "This field can not be empty"
+                etUsername.error = getString(R.string.empty_field_error)
                 false
             }
             etPassword.text.isEmpty() -> {
-                etPassword.error = "This field can not be empty"
+                etPassword.error = getString(R.string.empty_field_error)
                 false
             }
             else -> true
