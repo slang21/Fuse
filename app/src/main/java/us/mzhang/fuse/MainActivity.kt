@@ -45,14 +45,14 @@ class MainActivity : AppCompatActivity() {
         }
         val text =
             FirebaseAuth.getInstance().currentUser!!.uid // Whatever you need to encode in the QR code
-        val multiFormatWriter = MultiFormatWriter();
+        val multiFormatWriter = MultiFormatWriter()
         try {
-            val bitMatrix = multiFormatWriter.encode(text, BarcodeFormat.QR_CODE, 250, 250);
-            val barcodeEncoder = BarcodeEncoder();
+            val bitMatrix = multiFormatWriter.encode(text, BarcodeFormat.QR_CODE, 250, 250)
+            val barcodeEncoder = BarcodeEncoder()
             val bitmap = barcodeEncoder.createBitmap(bitMatrix);
-            ivQR.setImageBitmap(bitmap);
+            ivQR.setImageBitmap(bitmap)
         } catch (e: WriterException) {
-            e.printStackTrace();
+            e.printStackTrace()
         }
     }
 
